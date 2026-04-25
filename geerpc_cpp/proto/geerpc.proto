@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package geerpc;
+
+// Option is used for protocol negotiation between client and server.
+// Fixed JSON encoding at the start of each connection.
+message Option {
+    int32  magic_number     = 1;  // 0x3bef5c marks this as a geerpc request
+    string codec_type       = 2;  // e.g. "application/protobuf"
+    int64  connect_timeout  = 3;  // nanoseconds, 0 means no limit
+    int64  handle_timeout   = 4;  // nanoseconds, 0 means no limit
+}
+
+// Header is the RPC request/response header.
+message Header {
+    string service_method = 1;  // format "Service.Method"
+    uint64 seq            = 2;  // sequence number chosen by client
+    string error          = 3;  // error message, empty on success
+}

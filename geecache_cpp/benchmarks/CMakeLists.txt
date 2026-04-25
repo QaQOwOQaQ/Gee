@@ -1,0 +1,5 @@
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(BENCHMARK REQUIRED IMPORTED_TARGET benchmark)
+
+add_executable(geecache_benchmark geecache_benchmark.cpp)
+target_link_libraries(geecache_benchmark PRIVATE geecache_lib PkgConfig::BENCHMARK)
