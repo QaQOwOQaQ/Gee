@@ -7,8 +7,7 @@
 #include <unordered_map>
 #include <utility>
 
-namespace geecache {
-namespace lru {
+namespace geecache::lru {
 
 // Cache is a LRU cache. It is NOT safe for concurrent access.
 // V must have a Len() method returning int.
@@ -103,5 +102,4 @@ private:
     EvictedCallback on_evicted_;
 };
 
-}  // namespace lru
-}  // namespace geecache
+}  // namespace geecache::lru
